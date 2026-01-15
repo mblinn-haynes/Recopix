@@ -49,7 +49,7 @@
             <h3 class="font-semibold pt-4 border-t mt-4 text-orange-600">Manual Edit Color</h3>
             <div class="flex items-center space-x-2">
                 <input type="color" id="editorColorPicker" value="#0000FF" class="w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer">
-                <span id="currentColorDisplay" class="font-mono text-sm text-gray-700">#0000FF (Blue)</span>
+                <span id="currentColorDisplay" class="font-mono text-sm text-gray-700"></span>
             </div>
 
             <button id="generateButton" 
@@ -62,7 +62,7 @@
 
         <!-- Canvas Area -->
         <div class="lg:col-span-2 card flex flex-col items-center">
-            <h2 class="text-xl font-semibold mb-4 text-gray-800">2. Interactive Canvas (Click & Drag to Edit)</h2>
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">2: Interactive Canvas</h2>
             <canvas id="editorCanvas" width="48" height="48" class="w-full max-w-xl h-auto aspect-square"></canvas>
         </div>
         
@@ -77,7 +77,7 @@
                         <!-- Row Labels (Y-Axis) -->
                         <div class="absolute inset-y-0 right-full mr-1 text-xs text-gray-600 font-mono hidden sm:block">
                             <!-- 48 rows total. Percentage = (Row Number) / 48 * 100% -->
-                            <span class="absolute right-0 -translate-y-1/2" style="top: 2.083%;">1</span>
+                            <span class="absolute right-0 -translate-y-1/2" style="top: 1%;">1</span>
                             <span class="absolute right-0 -translate-y-1/2" style="top: 20.833%;">10</span>
                             <span class="absolute right-0 -translate-y-1/2" style="top: 41.667%;">20</span>
                             <span class="absolute right-0 -translate-y-1/2" style="top: 62.5%;">30</span>
@@ -90,7 +90,10 @@
 
                     <p class="mt-2 text-sm text-gray-500">
                         (Hover to see colour name)
-                        <span id="hoverInfo" class="font-bold text-red-600"></span>
+                        <div>
+                            <span id="hoverInfo" class="font-bold text-red-600"></span>
+
+                        </div>
                     </p>
                 </div>
                 <!-- Summary Output -->
@@ -358,9 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="grid grid-cols-4 font-bold text-gray-700 mt-2">
                 <div>COLOR</div>
-                <div class="text-right">USED</div>
-                <div class="text-right">REMAINING</div>
-                <div class="text-right">ORIGINAL</div>
+                <div class="text-right">USED| </div>
+                <div class="text-right">REMAINING| </div>
+                <div class="text-right">ORIGINAL </div>
             </div>
         `;
 
@@ -441,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (x >= 0 && x < mapSize && y >= 0 && y < mapSize) {
                 if (hoverInfo) {
-                    hoverInfo.textContent = ` | Color: ${finalColorNameMap[y][x]}`;
+                    hoverInfo.textContent = ` Colour: ${finalColorNameMap[y][x]}`;
                 }
             } else {
                 if (hoverInfo) {
